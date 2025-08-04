@@ -1,0 +1,26 @@
+{{>layouts/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">title</th>
+        <th scope="col">content</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#articleList}}  <!-- prefix : 앞에 고정시켜놓은 값 // 반복실행됨-->
+    <tr>
+        <th>{{id}}</th>
+        <td><a href="/articles/{{id}}">{{title}}</a></td>
+        <td>{{content}}</td>
+    </tr>
+    {{/articleList}}
+
+    </tbody>
+</table>
+
+<a href="/articles/new">새 글쓰기 </a>
+
+{{>layouts/footer}}
