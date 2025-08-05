@@ -12,9 +12,6 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
-    outputs:
-      TAG: ${{ steps.vars.outputs.TAG }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,8 +29,8 @@ jobs:
         id: vars
         run: |
           TAG=TAG-${GITHUB_SHA::7}
-          echo "TAG=$TAG"
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
+
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -50,10 +47,10 @@ jobs:
       - name: Checkout manifest branch
         uses: actions/checkout@v4
         with:
-          ref: manifest
+          ref: manifest # <- manifest 브랜치 체크아웃
 
       - name: Update image tag in deployment.yaml
-        run: |
+        run:  |
           TAG=${{ needs.build-and-push.outputs.TAG }}
           sed -i "s|${{ env.IMAGE_NAME }}:.*|${{ env.IMAGE_NAME }}:${TAG}|g" k8s/deployment.yaml
 
