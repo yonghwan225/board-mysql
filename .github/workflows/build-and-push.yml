@@ -12,6 +12,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    outputs:
+      TAG: ${{ steps.vars.outputs.TAG }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
