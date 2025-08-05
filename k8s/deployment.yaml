@@ -19,7 +19,7 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://mysql-service-name.mysql-namespace.svc.cluster.local:3306/mydatabase
+              value: jdbc:mysql://mysql:3306/springdb?serverTimezone=Asia/Seoul&useSSL=false
             - name: SPRING_DATASOURCE_USERNAME
               value: springuser
             - name: SPRING_DATASOURCE_PASSWORD
