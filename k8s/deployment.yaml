@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: kopo11/myapp-mysql:TAG-db0e850
+          image: kopo11/myapp-mysql:TAG-1fbc96c
           ports:
             - containerPort: 8080
           env:
